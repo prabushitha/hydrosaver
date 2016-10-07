@@ -1,0 +1,73 @@
+<RelativeLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.whileloop.hydrosaver.MainActivity" >
+
+    <TableLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:stretchColumns="*">
+	    <TableRow >
+	        <TextView 
+	           android:layout_width="fill_parent"
+	           android:layout_height="wrap_content"
+	           android:textColor="#372c24"
+	           android:text="Email"/>
+	    </TableRow>
+	    
+	    <TableRow >
+	        <EditText 
+	            android:id="@+id/editUser"
+	            android:layout_width="0dp"
+				android:layout_weight="1"
+	            android:layout_height="wrap_content"
+	            android:singleLine="true"/>
+	          <!--  Password Label -->
+	          
+	    </TableRow>
+	    
+	    <TableRow >
+	        <TextView 
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:textColor="#372c24"
+	            android:text="Password"/>
+	    </TableRow>
+	    
+	    <TableRow >
+	        <EditText 
+	            android:id="@+id/editPass"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+	            android:layout_height="wrap_content"
+	            android:singleLine="true"
+	            android:password="true"/>
+	        
+	    </TableRow>
+	    
+	    <TableRow >
+	        <TextView 
+	            android:layout_width="0dp"
+				android:layout_weight="1"
+	            />
+	        <!-- Login button -->
+	        <Button 
+	            android:id="@+id/btnLogin"
+	            android:layout_width="0dp"
+	            android:layout_weight="1"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="30dp"
+	            android:background="#0000FF"
+	            android:text="Login"/>
+	          
+	        <TextView 
+	            android:layout_width="0dp"
+				android:layout_weight="1"
+	            />
+	    </TableRow>  
+	        
+	</TableLayout>
+
+</RelativeLayout>
