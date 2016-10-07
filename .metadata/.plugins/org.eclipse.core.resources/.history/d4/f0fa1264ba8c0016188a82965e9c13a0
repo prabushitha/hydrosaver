@@ -1,0 +1,6 @@
+package com.whileloop.hydrosaver;
+
+public class User {
+	public int id;
+	public String email;
+}

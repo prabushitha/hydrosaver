@@ -1,0 +1,22 @@
+package com.whileloop.hydrosaver;
+
+import android.content.Context;
+import android.os.AsyncTask;
+
+public class SignIn extends AsyncTask<String,Void,String>{
+
+	
+	
+	
+	private Context context;
+	private int byGetOrPost = 0; 
+	public SignIn(){
+		this.context = context;
+	}
+	@Override
+	protected String doInBackground(String... params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
