@@ -1,9 +1,12 @@
 package com.whileloop.hydrosaver;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -21,8 +24,35 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        //------Session Checking--------------
+        SessionLogin.checkLoginStatus(this);
+        
+        //------------------------------------
+        btn_login = (Button)findViewById(R.id.btnLogin);
+        edit_user = (EditText)findViewById(R.id.editUser);
+        edit_pass = (EditText)findViewById(R.id.editPass);
+        
+        btn_login.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				loginPost();
+			}
+		});
     }
 
+    
+    public void loginPost(){
+        String username = edit_user.getText().toString();
+        String password = edit_pass.getText().toString();
+        new SignIn(this).execute(username,password);
+     }
+    
+    //--------------------------------
+    
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -41,4 +71,16 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    public void onBackPressed(){
+		Intent intent = new Intent(Intent.ACTION_MAIN);
+		intent.addCategory(Intent.CATEGORY_HOME);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent);
+		/*
+		Intent i = new Intent(this,MainActivity.class);
+		startActivity(i);*/
+	}
+    
+    
 }

@@ -1,0 +1,34 @@
+package com.whileloop.hydrosaver;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
+public class sessionLogin{
+	Context context;
+	
+	
+	
+	
+	
+	SharedPreferences sharedpreferences;
+	public static final String MyPREFERENCES = "MyPrefs";
+	public static final String LOG_STATUS = "islogged";
+	
+	public sessionLogin(Context context){
+		this.context = context;
+		sharedpreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+	}
+	//check if the user is logged in. this is checked in each activity
+	public boolean isLogged(){
+		boolean logged = sharedpreferences.getBoolean(LOG_STATUS, false);
+		return logged;
+	}
+	//setting login session
+	public void setLogged(boolean value){
+		SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putBoolean(LOG_STATUS, value);
+        editor.commit();
+	}
+	
+	
+}
