@@ -1,0 +1,148 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.whileloop.hydrosaver.SectionsActivity" 
+    android:background="#424242"
+    >
+
+    <TableLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="*">
+	    <TableRow>
+	       <Button android:id="@+id/thismonth"
+	                android:layout_width="0dp"
+	                android:layout_weight="1"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/section_button"
+	                android:textColor="#FFFFFF"
+	                android:text="This month"/>
+	        <Button android:id="@+id/lifetime"
+	                 android:layout_width="0dp"
+	                 android:layout_weight="1"
+	                android:layout_height="wrap_content"
+	              	android:background="#424242"
+	                android:background="@drawable/section_button"
+	                android:text="Life time"/>
+	    
+	    
+	    
+	    </TableRow>
+	    <TableRow
+	        >
+	        <TextView android:layout_width="fill_parent"
+	                 android:layout_height="wrap_content"
+	                android:textColor="#372c24"
+	                android:minHeight="200dp"
+	          		android:textSize="18sp"
+	             
+	               />
+	    </TableRow>
+	    <TableRow
+	        android:background="@drawable/section_tabs">
+	        
+	        <TextView android:layout_width="fill_parent"
+	                 android:layout_height="wrap_content"
+	                android:textColor="#372c24"
+	                android:minHeight="50dp"
+	               
+	                
+	               android:textSize="18sp"
+	             
+	               android:layout_weight="1"
+	                android:text="Kitchen"/>
+	        <TextView android:layout_width="fill_parent"
+	                 android:layout_height="wrap_content"
+	                android:textColor="#372c24"
+	               
+	                android:minHeight="50dp"
+	               android:textSize="18sp"
+	               android:layout_weight="1"
+	               android:layout_gravity="right"
+	                android:text="%"/>
+	    
+	    </TableRow>
+	    <TableRow
+	         android:background="@drawable/section_tabs">
+	        
+	        <TextView android:layout_width="fill_parent"
+	                 android:layout_height="wrap_content"
+	                android:textColor="#372c24"
+	                android:minHeight="50dp"
+	                
+	               android:textSize="18sp"
+	            
+	               android:layout_weight="2"
+	                android:text="Garden"/>
+	        <TextView android:layout_width="fill_parent"
+	                 android:layout_height="wrap_content"
+	                android:textColor="#372c24"
+	                
+	                android:minHeight="50dp"
+	               android:textSize="18sp"
+	               android:layout_weight="1"
+	               android:layout_gravity="right"
+	                android:text="%"/>
+	    
+	    </TableRow>
+	    <TableRow
+	        android:background="@drawable/section_tabs">
+	        
+	        <TextView android:layout_width="fill_parent"
+	                 android:layout_height="wrap_content"
+	                android:textColor="#372c24"
+	                android:minHeight="50dp"
+	                
+	               android:textSize="18sp"
+	             
+	               android:layout_weight="2"
+	                android:text="Kitchen"/>
+	        <TextView android:layout_width="fill_parent"
+	                 android:layout_height="wrap_content"
+	                android:textColor="#372c24"
+	              
+	                android:minHeight="50dp"
+	               android:textSize="18sp"
+	               android:layout_weight="1"
+	               android:layout_gravity="right"
+	                android:text="%"/>
+	    
+	    </TableRow>
+	    <TableRow
+	        android:background="@drawable/section_tabs">
+	        
+	        <TextView android:layout_width="fill_parent"
+	                 android:layout_height="wrap_content"
+	                android:textColor="#372c24"
+	                android:minHeight="50dp"
+	                
+	               android:textSize="18sp"
+	             
+	               android:layout_weight="2"
+	                android:text="Washroom"/>
+	        <TextView android:layout_width="fill_parent"
+	                 android:layout_height="wrap_content"
+	                android:textColor="#372c24"
+	                
+	                android:minHeight="50dp"
+	               android:textSize="18sp"
+	               android:layout_weight="1"
+	               android:layout_gravity="right"
+	                android:text="%"/>
+	    
+	    </TableRow>
+	    
+	    
+	    
+	    
+	          
+	          
+	        
+	</TableLayout>
+
+</RelativeLayout>

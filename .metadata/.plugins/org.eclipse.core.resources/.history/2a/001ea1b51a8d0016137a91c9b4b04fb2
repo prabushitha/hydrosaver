@@ -1,0 +1,17 @@
+package com.whileloop.hydrosaver;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class DataFile implements Serializable{
+	
+	
+	
+	
+	
+	ArrayList<Device> homedevices;
+	public DataFile() {
+		// TODO Auto-generated constructor stub
+		homedevices =  new ArrayList<Device>();
+	}
+}

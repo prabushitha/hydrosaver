@@ -1,0 +1,13 @@
+package com.whileloop.hydrosaver;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class DataFile implements Serializable{
+	
+	
+	
+	
+	
+	ArrayList<Device> homedevices = new ArrayList<Device>();
+}

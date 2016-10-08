@@ -1,0 +1,14 @@
+package com.whileloop.hydrosaver;
+
+import android.content.Context;
+
+public class ConnectDevice {
+	
+	
+	
+	
+	Context context;
+	public ConnectDevice(Context context){
+		
+	}
+}

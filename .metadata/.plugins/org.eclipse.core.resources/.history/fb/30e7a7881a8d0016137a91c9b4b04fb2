@@ -1,0 +1,7 @@
+package com.whileloop.hydrosaver;
+
+import java.io.Serializable;
+
+public class DataFile implements Serializable{
+
+}

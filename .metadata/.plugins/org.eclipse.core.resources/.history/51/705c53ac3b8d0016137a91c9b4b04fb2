@@ -1,0 +1,39 @@
+package com.whileloop.hydrosaver;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.UUID;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+import android.content.Context;
+
+public class ConnectDevice {
+	
+	
+	
+	
+	Context context;
+	
+	private BluetoothAdapter btAdapter = null;
+    private BluetoothSocket mmSocket;
+    private BluetoothDevice mmDevice;
+    private static String address = "20:15:12:04:25:83";
+    private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+
+    private OutputStream mmOutputStream;
+    private InputStream mmInputStream;
+    private Thread workerThread;
+
+    //IBINDER
+    boolean mBound = false;
+
+
+    byte[] readBuffer;
+    int readBufferPosition;
+    volatile boolean stopWorker;
+	public ConnectDevice(Context context){
+		this.context = context;
+	}
+}
