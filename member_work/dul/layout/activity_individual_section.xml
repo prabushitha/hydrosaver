@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+         android:background="#ccccff"  >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:background="#b3ffff"
+            android:weightSum="2"
+            android:minHeight="100px">
+            
+            <EditText 
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:text="Bathroom"
+            android:minHeight="100px"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#000033"
+            android:textSize="22sp"
+                />
+            
+             <EditText 
+            android:id="@+id/precentageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:text="72%"
+             android:layout_weight="1"
+            android:layout_gravity="end"
+            android:minHeight="100px"
+          android:textColor="#000033"
+            android:textSize="32sp"
+                />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+             android:background="#ffffff" 
+             android:minHeight="300px">
+           
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            >
+            <Button
+                android:id="@+id/button1"
+                android:layout_marginTop="20px"
+                android:layout_marginLeft="10px"
+                android:layout_marginRight="10px"
+                android:padding="10dp"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/mybutton"
+                android:text="Set Alerts"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+            />
+        </TableRow>
+		<TableRow>
+		    <TextView 
+		    android:id="@+id/alertTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alert Area"
+            android:background="#ccddff"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textSize="22sp"
+            android:textColor="#e62e00"
+		        />
+		    
+		</TableRow>
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <TextView 
+              
+            android:id="@+id/alertArea"
+            android:layout_margin="10px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:layout_weight="1" 
+            android:minHeight="200px"
+                />
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>
