@@ -34,113 +34,130 @@
 	    
 	    </TableRow>
 	    <TableRow
-	        >
-	        <TextView android:layout_width="fill_parent"
-	                 android:layout_height="wrap_content"
-	                android:textColor="#372c24"
-	                android:minHeight="200dp"
-	          		android:textSize="18sp"
-	             
-	               />
+	        android:minHeight="550px">
+	       		<com.github.mikephil.charting.charts.PieChart
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="match_parent"
+					android:gravity="center"
+					android:id="@+id/graphSectionPie">
+						    
+				</com.github.mikephil.charting.charts.PieChart>
 	    </TableRow>
 	    <TableRow
-	        android:background="@drawable/section_tabs">
+	        android:layout_marginTop="5dp">
 	        
-	        <TextView 
-	            android:layout_width="fill_parent"
-	               android:layout_height="wrap_content"
-	               android:textColor="#372c24"
-	               android:minHeight="50dp"
-	               android:textSize="18sp"
-	               android:layout_weight="1"
-	                android:text="Kitchen"/>
-	        <TextView 
-	            android:id="@+id/section1_label"
-	            android:layout_width="fill_parent"
-	                 android:layout_height="wrap_content"
-	                android:textColor="#372c24"
-	               
-	                android:minHeight="50dp"
-	               android:textSize="18sp"
-	               android:layout_weight="1"
-	               android:layout_gravity="right"
-	                android:text="%"/>
+	        <TextView
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:text="1st Floor Bathroom"
+		        android:textColor="#ffffff"
+		        android:minHeight="100px"
+		        android:singleLine="true"
+		        android:layout_weight="8"
+		        android:ellipsize="end" />
+		
+		    <TextView
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:text="25%"
+		        android:textColor="#ffc800"
+		        android:id="@+id/txtPrecentage"
+		        android:minHeight="100px"
+		        android:singleLine="false"
+		        android:layout_weight="2"
+		        android:textStyle="bold"
+		        android:gravity="right"/>
 	    
 	    </TableRow>
+		
 	    <TableRow
-	         android:background="@drawable/section_tabs">
+	        android:layout_marginTop="5dp">
 	        
-	        <TextView android:layout_width="fill_parent"
-	                 android:layout_height="wrap_content"
-	                android:textColor="#372c24"
-	                android:minHeight="50dp"
-	                
-	               android:textSize="18sp"
-	            
-	               android:layout_weight="2"
-	                android:text="Garden"/>
-	        <TextView android:layout_width="fill_parent"
-	                 android:layout_height="wrap_content"
-	                android:textColor="#372c24"
-	                
-	                android:minHeight="50dp"
-	               android:textSize="18sp"
-	               android:layout_weight="1"
-	               android:layout_gravity="right"
-	                android:text="%"/>
+	        <TextView
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:text="Kitchen"
+		        android:textColor="#ffffff"
+		        android:minHeight="100px"
+		        android:singleLine="true"
+		        android:layout_weight="8"
+		        android:ellipsize="end" />
+		
+		    <TextView
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:text="40%"
+		        android:textColor="#ffc800"
+		        android:minHeight="100px"
+		        android:singleLine="false"
+		        android:layout_weight="2"
+		        android:textStyle="bold"
+		        android:gravity="right"/>
 	    
 	    </TableRow>
+	    
 	    <TableRow
-	        android:background="@drawable/section_tabs">
+	        android:layout_marginTop="5dp">
 	        
-	        <TextView android:layout_width="fill_parent"
-	                 android:layout_height="wrap_content"
-	                android:textColor="#372c24"
-	                android:minHeight="50dp"
-	                
-	               android:textSize="18sp"
-	             
-	               android:layout_weight="2"
-	                android:text="Kitchen"/>
-	        <TextView android:layout_width="fill_parent"
-	                 android:layout_height="wrap_content"
-	                android:textColor="#372c24"
-	              
-	                android:minHeight="50dp"
-	               android:textSize="18sp"
-	               android:layout_weight="1"
-	               android:layout_gravity="right"
-	                android:text="%"/>
+	        <TextView
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:text="Front Door Tap"
+		        android:textColor="#ffffff"
+		        android:id="@+id/txtName"
+		        android:minHeight="100px"
+		        android:singleLine="true"
+		        android:layout_weight="8"
+		        android:ellipsize="end" />
+		
+		    <TextView
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:text="25%"
+		        android:textColor="#ffc800"
+		        android:minHeight="100px"
+		        android:singleLine="false"
+		        android:layout_weight="2"
+		        android:textStyle="bold"
+		        android:gravity="right"/>
 	    
 	    </TableRow>
+	    
 	    <TableRow
-	        android:background="@drawable/section_tabs">
+	        android:layout_marginTop="5dp">
 	        
-	        <TextView android:layout_width="fill_parent"
-	                 android:layout_height="wrap_content"
-	                android:textColor="#372c24"
-	                android:minHeight="50dp"
-	                
-	               android:textSize="18sp"
-	             
-	               android:layout_weight="2"
-	                android:text="Washroom"/>
-	        <TextView android:layout_width="fill_parent"
-	                 android:layout_height="wrap_content"
-	                android:textColor="#372c24"
-	                
-	                android:minHeight="50dp"
-	               android:textSize="18sp"
-	               android:layout_weight="1"
-	               android:layout_gravity="right"
-	                android:text="%"/>
+	        <TextView
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:text="Back Door Tap"
+		        android:textColor="#ffffff"
+		        android:minHeight="100px"
+		        android:singleLine="true"
+		        android:layout_weight="8"
+		        android:ellipsize="end" />
+		
+		    <TextView
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:text="40%"
+		        android:textColor="#ffc800"
+		        android:minHeight="100px"
+		        android:singleLine="false"
+		        android:layout_weight="2"
+		        android:textStyle="bold"
+		        android:gravity="right"
+		        />
 	    
 	    </TableRow>
-	    
-	    
-	    
-	    
-	          
 	          
 	        
 	</TableLayout>

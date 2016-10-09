@@ -1,0 +1,170 @@
+package com.whileloop.hydrosaver;
+
+import java.util.ArrayList;
+
+import org.w3c.dom.Text;
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class HomeActivity extends Activity {
+	SessionLogin sessionlogin;
+	Context context;
+	PieChart piechart;
+	Button syncButton;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+		context = this;
+		sessionlogin = new SessionLogin(this);
+		syncButton = (Button)findViewById(R.id.btnsync);
+		//getting piechart 
+		piechart = (PieChart)findViewById(R.id.graphMainPie);
+		OnClickListener mainButtonClicks = new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(v.getId()==R.id.btnLogout){
+					sessionlogin.logout();
+					Intent in = new Intent(context,MainActivity.class);
+					startActivity(in);
+				}else if(v.getId()==R.id.btnsections){
+					Intent in = new Intent(context,SectionsActivity.class);
+					startActivity(in);
+				}else if(v.getId()==R.id.btncommunity){
+					//new SignIn(this).execute(7);
+				}else if(v.getId()==R.id.btnsync){
+					ConnectDevice conDevice = new ConnectDevice(context, syncButton);
+				}
+				
+			}
+		};
+		//menu buttons
+		Button btnsync = syncButton;
+		Button btnsections = (Button)findViewById(R.id.btnsections);
+		Button btncommunity = (Button)findViewById(R.id.btncommunity);
+		Button btnlogout = (Button)findViewById(R.id.btnLogout);
+		
+		btnsync.setOnClickListener(mainButtonClicks);
+		btnsections.setOnClickListener(mainButtonClicks);
+		btncommunity.setOnClickListener(mainButtonClicks);
+		btnlogout.setOnClickListener(mainButtonClicks);
+		
+		//--------------------------------------
+		//Get the data file
+		DataFile df = DataFile.getDataFile(this);
+		if(df!=null){
+			int sumVolume = 0;
+			for(int i=0;i<df.homedevices.size();i++){
+				sumVolume += df.homedevices.get(i).volume;
+			}
+			(sumVolume*100.0f)/ConnectDevice.MAX_PER_DAY;
+		}else{
+			//creating pie chart
+			createPieChart(0);
+		}
+		
+		
+		
+		
+	}
+	public void createPieChart(int currentUsage){
+		
+		//getting data
+		Entry currentEntry = new Entry(currentUsage, 0);
+		Entry remainEntry;
+		remainEntry = new Entry(100-currentUsage, 1);
+		
+		int[] colors = new int[]{
+				Color.rgb(0, 160, 255),
+				Color.rgb(228, 156, 52)
+				};
+		if(100-currentUsage<0){
+			remainEntry = new Entry(0,1);
+			colors = new int[]{
+					Color.rgb(255, 0, 0),
+					Color.rgb(228, 156, 52)
+					};
+		}
+		//if(currentUsage>100){
+			//remainEntry = new Entry(100-currentUsage, 1);
+		//}else{
+			//remainEntry = new Entry(0, 1);
+		//}
+		
+		//adding entries
+		ArrayList<Entry> entries = new ArrayList<Entry>();
+		entries.add(currentEntry);
+		entries.add(remainEntry);
+		//defining labels
+		ArrayList<String> labels = new ArrayList<String>();
+		labels.add("");
+		labels.add("");
+		//define dataset
+		PieDataSet dataset = new PieDataSet(entries, "Overall");
+		//pie data
+		PieData data = new PieData(labels,dataset);
+		//setting pie data to the graph
+		piechart.setData(data);
+		
+		
+		//configuring chart
+		piechart.setDescription("");    // Hide the description
+		piechart.getLegend().setEnabled(false);   // Hide the legend
+		piechart.setCenterText(currentUsage+"%"); 
+		piechart.setCenterTextColor(Color.rgb(255, 255, 255));
+		piechart.setHoleColor(Color.rgb(66, 66, 66));
+		piechart.setCenterTextSize(40);
+		piechart.setHoleRadius(80);
+		
+		dataset.setColors(colors);
+		piechart.invalidate();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.home, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	@Override
+    public void onBackPressed(){
+		Intent intent = new Intent(Intent.ACTION_MAIN);
+		intent.addCategory(Intent.CATEGORY_HOME);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent);
+		/*
+		Intent i = new Intent(this,MainActivity.class);
+		startActivity(i);*/
+	}
+}

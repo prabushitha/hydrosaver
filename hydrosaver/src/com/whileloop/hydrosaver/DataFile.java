@@ -11,7 +11,7 @@ import android.content.Context;
 
 public class DataFile implements Serializable{
 
-	public static final String FILENAME = "datafile.ser";
+	public static final String FILENAME = "datafile2.ser";
 	ArrayList<Device> homedevices;
 	public DataFile() {
 		// TODO Auto-generated constructor stub

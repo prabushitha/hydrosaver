@@ -35,15 +35,6 @@
 	        </TableRow>
 	
 		     <TableRow
-	            android:layout_width="match_parent"
-	            android:layout_height="0dp"
-	            android:layout_weight="1"  >
-			    <TextView 
-			        android:id="@+id/mainUnitsText"
-			        android:text="72%"
-			        />
-		     </TableRow>
-		     <TableRow
 	            android:id="@+id/tableRow6"
 	            android:layout_width="match_parent"
 	            android:layout_height="0dp"
@@ -113,7 +104,7 @@
 	            android:layout_height="0dp"
 	            android:layout_weight="1" 
 		        >
-		        <!-- Login button -->
+
 		        
 		        <Button
 	                android:id="@+id/btnLogout"
@@ -128,8 +119,29 @@
 	                android:layout_weight="1"
 	                android:textColor="#ffffff"
 	                />
+		    </TableRow>
+		      
+		    <TableRow 
+		        android:layout_width="match_parent"
+	            android:layout_height="0dp"
+	            android:layout_weight="1" 
+		        >
+		        
+		        <ImageButton
+	                android:id="@+id/btnDayBreak"
+	                android:src="@drawable/new_logo"
+					android:background="@null"
+	                android:layout_marginTop="70px"
+	                android:layout_marginLeft="10px"
+	                android:layout_marginRight="10px"
+	                android:padding="10dp"
+	                android:layout_width="fill_parent"
+	                android:layout_height="match_parent"
+	                android:text="Day Break"
+	                android:layout_weight="1"
+	                android:textColor="#ffffff"
+	                />
 		        </TableRow>
-		          
 		        
 		</TableLayout>
 	</ScrollView>

@@ -27,10 +27,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ConnectDevice extends AppCompatActivity{
+	public static final int MAX_PER_DAY = 10000;
 	
 	String txtData;
 	Button btnRefresh;
-	TextView resultText;
 	
 	Context context;
 	private int c;
@@ -53,10 +53,9 @@ public class ConnectDevice extends AppCompatActivity{
     volatile boolean stopWorker;
     
     //constructor
-	public ConnectDevice(Context context,Button sync,TextView resultText){
+	public ConnectDevice(Context context,Button sync){
 		this.context = context;
 		this.btnRefresh = sync;
-		this.resultText = resultText;
 		c = 1;
         init();
 	}
@@ -214,7 +213,11 @@ public class ConnectDevice extends AppCompatActivity{
 	                                            //x = getdata(data);
 	                                            txtData = data;
 	                                            Log.i("ArduinoData",data);
-	                                            resultText.setText(calculateUsage(data)+"%");
+	                                            //String percent = calculateUsage(data)+"%";
+	                                            HomeActivity hA = (HomeActivity)context;
+	                                            hA.createPieChart(calculateUsage(data));
+	                                            //hA.piechart.setCenterText(percent);
+	                                            //hA.piechart.invalidate();
 	                                            //pieChart.setCenterText(calculateUsage(data)+"%");
 	                                            //skPosition.setProgress(x);
 	                                        }
@@ -241,12 +244,11 @@ public class ConnectDevice extends AppCompatActivity{
 	    }
 	}
 	public int calculateUsage(String data){
-		//Assume 300ml per month(10 seconds) is the limit
-		int MAX_PER_DAY = 10000;
+		//Assume 10000ml per month(10 seconds) is the limit
 		//data=>ml:seconds
 		String[] strarr = data.split(":");
 		int units = 0;
-		if(strarr.length==2){
+		if(strarr.length>1){
 			try{
 				units = Integer.parseInt(strarr[0]);
 				return (int)((units*1.0f/MAX_PER_DAY)*100);

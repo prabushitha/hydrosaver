@@ -1,7 +1,0 @@
-package com.whileloop.hydrosaver;
-
-public class ConnectDevice {
-	public ConnectDevice(Context context){
-		
-	}
-}

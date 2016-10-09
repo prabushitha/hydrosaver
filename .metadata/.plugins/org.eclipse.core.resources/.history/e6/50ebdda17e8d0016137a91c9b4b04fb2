@@ -1,0 +1,24 @@
+package com.whileloop.hydrosaver;
+
+public class Device {
+	public int volume; //
+	
+	
+	
+	
+	
+	
+	
+	
+	public int calculateCost(){
+		//cost making algorithm here
+		return units*3;
+	}
+	public int getUnits(){
+		//1000 liters = 1 unit
+		//in our system 100ml
+		return volume*3;
+	}
+	
+	
+}

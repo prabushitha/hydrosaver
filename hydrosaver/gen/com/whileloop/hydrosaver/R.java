@@ -27,46 +27,55 @@ public final class R {
         public static final int navigation_drawer_width=0x7f050002;
     }
     public static final class drawable {
-        public static final int drawer_shadow=0x7f020000;
-        public static final int graph1=0x7f020001;
-        public static final int ic_drawer=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int logo=0x7f020004;
-        public static final int mybutton=0x7f020005;
-        public static final int section_button=0x7f020006;
-        public static final int section_tabs=0x7f020007;
-        public static final int syncbutton=0x7f020008;
+        public static final int community_but=0x7f020000;
+        public static final int drawer_shadow=0x7f020001;
+        public static final int graph1=0x7f020002;
+        public static final int ic_drawer=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int logo=0x7f020005;
+        public static final int mybutton=0x7f020006;
+        public static final int new_logo=0x7f020007;
+        public static final int section_button=0x7f020008;
+        public static final int section_tabs=0x7f020009;
+        public static final int syncbutton=0x7f02000a;
     }
     public static final class id {
-        public static final int action_settings=0x7f090011;
-        public static final int btnLogin=0x7f09000d;
-        public static final int btnLogout=0x7f09000a;
-        public static final int btncommunity=0x7f090009;
-        public static final int btnsections=0x7f090007;
-        public static final int btnsync=0x7f090005;
-        public static final int editPass=0x7f09000c;
-        public static final int editUser=0x7f09000b;
-        public static final int graphMainPie=0x7f090002;
-        public static final int lifetime=0x7f09000f;
-        public static final int mainUnitsText=0x7f090003;
+        public static final int action_settings=0x7f090016;
+        public static final int allUsageText=0x7f090002;
+        public static final int btnDayBreak=0x7f09000d;
+        public static final int btnLogin=0x7f090010;
+        public static final int btnLogout=0x7f09000c;
+        public static final int btncommunity=0x7f09000b;
+        public static final int btnsections=0x7f090009;
+        public static final int btnsync=0x7f090007;
+        public static final int editPass=0x7f09000f;
+        public static final int editUser=0x7f09000e;
+        public static final int graphMainPie=0x7f090005;
+        public static final int graphSectionPie=0x7f090013;
+        public static final int lifetime=0x7f090012;
+        public static final int linegraph=0x7f090001;
         public static final int scrollView1=0x7f090000;
-        public static final int section1_label=0x7f090010;
-        public static final int tableRow2=0x7f090001;
-        public static final int tableRow4=0x7f090006;
-        public static final int tableRow5=0x7f090008;
-        public static final int tableRow6=0x7f090004;
-        public static final int thismonth=0x7f09000e;
+        public static final int tableRow2=0x7f090004;
+        public static final int tableRow4=0x7f090008;
+        public static final int tableRow5=0x7f09000a;
+        public static final int tableRow6=0x7f090006;
+        public static final int thismonth=0x7f090011;
+        public static final int txtName=0x7f090015;
+        public static final int txtPrecentage=0x7f090014;
+        public static final int userUsageText=0x7f090003;
     }
     public static final class layout {
-        public static final int activity_home=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int activity_sections=0x7f030002;
+        public static final int activity_community=0x7f030000;
+        public static final int activity_home=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int activity_sections=0x7f030003;
     }
     public static final class menu {
-        public static final int global=0x7f080000;
-        public static final int home=0x7f080001;
-        public static final int main=0x7f080002;
-        public static final int sections=0x7f080003;
+        public static final int community=0x7f080000;
+        public static final int global=0x7f080001;
+        public static final int home=0x7f080002;
+        public static final int main=0x7f080003;
+        public static final int sections=0x7f080004;
     }
     public static final class string {
         public static final int action_example=0x7f060009;
@@ -75,6 +84,7 @@ public final class R {
         public static final int hello_world=0x7f060001;
         public static final int navigation_drawer_close=0x7f060008;
         public static final int navigation_drawer_open=0x7f060007;
+        public static final int title_activity_community=0x7f06000b;
         public static final int title_activity_home=0x7f060003;
         public static final int title_activity_sections=0x7f06000a;
         public static final int title_section1=0x7f060004;

@@ -37,6 +37,10 @@
             android:name=".SectionsActivity"
             android:label="@string/title_activity_sections" >
         </activity>
+        <activity
+            android:name=".CommunityActivity"
+            android:label="@string/title_activity_community" >
+        </activity>
     </application>
 
 </manifest>

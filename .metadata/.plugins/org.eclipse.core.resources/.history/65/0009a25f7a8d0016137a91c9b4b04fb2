@@ -1,0 +1,92 @@
+package com.whileloop.hydrosaver;
+
+import java.util.ArrayList;
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class SectionsActivity extends Activity {
+	PieChart piechart;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_sections);
+		piechart = (PieChart)findViewById(R.id.graphSectionPie);
+		createPieChart();
+	}
+	
+	
+	
+	
+	public void createPieChart(){
+		
+		//getting data
+		Entry currentEntry = new Entry(25, 0);
+		Entry remainEntry = new Entry(40, 1);
+		
+		//if(currentUsage>100){
+			//remainEntry = new Entry(100-currentUsage, 1);
+		//}else{
+			//remainEntry = new Entry(0, 1);
+		//}
+		
+		//adding entries
+		ArrayList<Entry> entries = new ArrayList<Entry>();
+		entries.add(currentEntry);
+		entries.add(remainEntry);
+		entries.add(currentEntry);
+		entries.add(remainEntry);
+		//defining labels
+		ArrayList<String> labels = new ArrayList<String>();
+		labels.add("1st Floor Common");
+		labels.add("Kitchen");
+		labels.add("Front Door Tap");
+		labels.add("Back Door Tap");
+		//define dataset
+		PieDataSet dataset = new PieDataSet(entries, "Overall");
+		//pie data
+		PieData data = new PieData(labels,dataset);
+		//setting pie data to the graph
+		piechart.setData(data);
+		
+		
+		//configuring chart
+		piechart.setDescription("");    // Hide the description
+		piechart.getLegend().setEnabled(false);   // Hide the legend
+		piechart.setHoleColor(Color.rgb(66, 66, 66));
+		piechart.setCenterTextSize(40);
+		piechart.setHoleRadius(1);
+		
+		dataset.setColors(colors);
+		piechart.invalidate();
+	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.sections, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	
+	
+}

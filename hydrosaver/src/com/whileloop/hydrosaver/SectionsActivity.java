@@ -1,18 +1,77 @@
 package com.whileloop.hydrosaver;
 
+import java.util.ArrayList;
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class SectionsActivity extends Activity {
-	
+	PieChart piechart;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sections);
+		piechart = (PieChart)findViewById(R.id.graphSectionPie);
+		createPieChart();
 	}
-
+	
+	
+	
+	
+	public void createPieChart(){
+		
+		//getting data
+		Entry currentEntry = new Entry(25, 0);
+		Entry remainEntry = new Entry(40, 1);
+		
+		//if(currentUsage>100){
+			//remainEntry = new Entry(100-currentUsage, 1);
+		//}else{
+			//remainEntry = new Entry(0, 1);
+		//}
+		
+		//adding entries
+		ArrayList<Entry> entries = new ArrayList<Entry>();
+		entries.add(currentEntry);
+		entries.add(remainEntry);
+		entries.add(currentEntry);
+		entries.add(remainEntry);
+		//defining labels
+		ArrayList<String> labels = new ArrayList<String>();
+		labels.add("1st Floor Common");
+		labels.add("Kitchen");
+		labels.add("Front Door Tap");
+		labels.add("Back Door Tap");
+		//define dataset
+		PieDataSet dataset = new PieDataSet(entries, "Overall");
+		//pie data
+		PieData data = new PieData(labels,dataset);
+		//setting pie data to the graph
+		piechart.setData(data);
+		
+		
+		//configuring chart
+		piechart.setDescription("");    // Hide the description
+		piechart.getLegend().setEnabled(false);   // Hide the legend
+		piechart.setHoleRadius(0);
+		
+		int[] colors = new int[]{
+				Color.rgb(0, 160, 255),
+				Color.rgb(228, 156, 52),
+				Color.rgb(228, 15, 52),
+				Color.rgb(15, 156, 52)
+				};
+		dataset.setColors(colors);
+		piechart.invalidate();
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -31,4 +90,7 @@ public class SectionsActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
+	
 }

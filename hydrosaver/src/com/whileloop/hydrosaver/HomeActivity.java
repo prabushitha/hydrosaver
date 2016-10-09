@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class HomeActivity extends Activity {
@@ -28,15 +29,17 @@ public class HomeActivity extends Activity {
 	Context context;
 	PieChart piechart;
 	Button syncButton;
-	TextView overallUsageTextView;
+	DataFile df;
+	int cusage;
+	int lastDayBreakUnits = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+		cusage = 0;
 		context = this;
 		sessionlogin = new SessionLogin(this);
 		syncButton = (Button)findViewById(R.id.btnsync);
-		overallUsageTextView = (TextView)findViewById(R.id.mainUnitsText);
 		//getting piechart 
 		piechart = (PieChart)findViewById(R.id.graphMainPie);
 		OnClickListener mainButtonClicks = new OnClickListener() {
@@ -49,15 +52,25 @@ public class HomeActivity extends Activity {
 					Intent in = new Intent(context,MainActivity.class);
 					startActivity(in);
 				}else if(v.getId()==R.id.btnsections){
+					saveDataFile();
 					Intent in = new Intent(context,SectionsActivity.class);
 					startActivity(in);
 				}else if(v.getId()==R.id.btncommunity){
-					Intent in = new Intent(context,MainActivity.class);
-					startActivity(in);
+					saveDataFile();
+					new CommunityStat(context).execute("7");
 				}else if(v.getId()==R.id.btnsync){
-					ConnectDevice conDevice = new ConnectDevice(context, syncButton,overallUsageTextView);
+					saveDataFile();
+					ConnectDevice conDevice = new ConnectDevice(context, syncButton);
+				}else if(v.getId()==R.id.btnDayBreak){
+					int usage = cusage-lastDayBreakUnits;
+					
+					lastDayBreakUnits = cusage;
+					if(usage<0){
+						usage = 0;
+					}
+					
+					new SendDayBreak(context).execute(usage+"",sessionlogin.sharedpreferences.getInt(SessionLogin.USER_ID, -1)+"");
 				}
-				
 			}
 		};
 		//menu buttons
@@ -65,24 +78,75 @@ public class HomeActivity extends Activity {
 		Button btnsections = (Button)findViewById(R.id.btnsections);
 		Button btncommunity = (Button)findViewById(R.id.btncommunity);
 		Button btnlogout = (Button)findViewById(R.id.btnLogout);
+		ImageButton btndaybreak = (ImageButton)findViewById(R.id.btnDayBreak);
 		
 		btnsync.setOnClickListener(mainButtonClicks);
 		btnsections.setOnClickListener(mainButtonClicks);
 		btncommunity.setOnClickListener(mainButtonClicks);
 		btnlogout.setOnClickListener(mainButtonClicks);
+		btndaybreak.setOnClickListener(mainButtonClicks);
 		
 		//--------------------------------------
-		//creating pie chart
-		createPieChart();
+		//Get the data file
+		df = DataFile.getDataFile(this);
+		if(df!=null){
+			int sumVolume = 0;
+			for(int i=0;i<df.homedevices.size();i++){
+				sumVolume += df.homedevices.get(i).volume;
+			}
+			int currentP = (int)((sumVolume*100.0f)/ConnectDevice.MAX_PER_DAY);
+			lastDayBreakUnits = currentP;
+			createPieChart(currentP);
+		}else{
+			//creating pie chart
+			createPieChart(0);
+		}
+		
 		
 		
 		
 	}
-	public void createPieChart(){
+	
+	public void saveDataFile(){
+		//save datafile
+		DataFile datafile = df;
+		if(df!=null && df.homedevices.size()>0){
+			Device device = df.homedevices.get(0);
+			device.volume = Device.getVolume(cusage);
+		}else{
+			datafile = new DataFile();
+			Device device = new Device();
+			device.volume = Device.getVolume(cusage);
+			datafile.homedevices.add(device);
+		}
 		
+		DataFile.saveDataFile(context, datafile);
+	}
+	
+	public void createPieChart(int currentUsage){
+		cusage = currentUsage;
 		//getting data
-		Entry currentEntry = new Entry(72f, 0);
-		Entry remainEntry = new Entry(28f, 1);
+		Entry currentEntry = new Entry(currentUsage, 0);
+		Entry remainEntry;
+		remainEntry = new Entry(100-currentUsage, 1);
+		
+		int[] colors = new int[]{
+				Color.rgb(0, 160, 255),
+				Color.rgb(228, 156, 52)
+				};
+		if(100-currentUsage<0){
+			remainEntry = new Entry(0,1);
+			colors = new int[]{
+					Color.rgb(255, 0, 0),
+					Color.rgb(228, 156, 52)
+					};
+		}
+		//if(currentUsage>100){
+			//remainEntry = new Entry(100-currentUsage, 1);
+		//}else{
+			//remainEntry = new Entry(0, 1);
+		//}
+		
 		//adding entries
 		ArrayList<Entry> entries = new ArrayList<Entry>();
 		entries.add(currentEntry);
@@ -102,17 +166,14 @@ public class HomeActivity extends Activity {
 		//configuring chart
 		piechart.setDescription("");    // Hide the description
 		piechart.getLegend().setEnabled(false);   // Hide the legend
-		piechart.setCenterText("72%"); 
+		piechart.setCenterText(currentUsage+"%"); 
 		piechart.setCenterTextColor(Color.rgb(255, 255, 255));
 		piechart.setHoleColor(Color.rgb(66, 66, 66));
 		piechart.setCenterTextSize(40);
 		piechart.setHoleRadius(80);
-		//dataset.setColors(ColorTemplate.COLORFUL_COLORS);
-		int[] colors = new int[]{
-				Color.rgb(0, 160, 255),
-				Color.rgb(228, 156, 52)
-				};
+		
 		dataset.setColors(colors);
+		piechart.invalidate();
 	}
 
 	@Override

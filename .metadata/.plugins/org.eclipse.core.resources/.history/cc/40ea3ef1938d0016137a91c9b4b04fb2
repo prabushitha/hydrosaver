@@ -1,0 +1,105 @@
+package com.whileloop.hydrosaver;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.XAxis.XAxisPosition;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class CommunityActivity extends Activity {
+	LineChart lineChart;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_community);
+		
+		Bundle extras = getIntent().getExtras();
+		int[] average = extras.getIntArray("averageUsage");
+		ArrayList<Entry> avgEntries = new ArrayList<Entry>();
+		for(int i=0;i<average.length;i++){
+			Log.i("Intent Pass", i+"");
+			Entry avgEntry = new Entry(average[i], i);
+			avgEntries.add(avgEntry);
+		}
+		
+		
+		lineChart = (LineChart)findViewById(R.id.linegraph);
+		ArrayList<String> lineDates = new ArrayList<String>();
+		lineDates.add("Monday");
+		lineDates.add("Tuesday");
+		lineDates.add("Wednesday");
+		lineDates.add("Thursday");
+		lineDates.add("Friday");
+		lineDates.add("Saturaday");
+		lineDates.add("Sunday");
+		
+		
+		//AVG
+		LineDataSet linedataset_avg = new LineDataSet(avgEntries, "Average Level");
+		linedataset_avg.setColor(Color.YELLOW);
+		linedataset_avg.setDrawCircles(true);
+		linedataset_avg.setDrawValues(true);
+		
+		List<ILineDataSet> dataset = new ArrayList<ILineDataSet>();
+		dataset.add(linedataset_avg);
+		
+		//LineData lineData = new LineData(lineDates,linedataset);
+		LineData lineData = new LineData(lineDates,dataset);
+		lineChart.setData(lineData);
+		lineChart.setTouchEnabled(true);
+		lineChart.setDragEnabled(true);
+		lineChart.setScaleEnabled(true);
+		
+		lineChart.setVisibleXRangeMaximum(7);
+		lineChart.setDescription("");
+		lineChart.getLegend().setWordWrapEnabled(true);
+		lineChart.getLegend().setEnabled(true);
+		
+		XAxis xAxis = lineChart.getXAxis();
+		xAxis.setLabelRotationAngle(90.0f);
+		xAxis.setPosition(XAxisPosition.BOTTOM);
+		xAxis.setLabelsToSkip(0);
+		
+		
+		YAxis yAxisLeft = lineChart.getAxisLeft();
+		yAxisLeft.setAxisMinValue(0f);
+		yAxisLeft.setLabelCount(15, true);
+		
+		YAxis yAxisRight = lineChart.getAxisRight();
+		yAxisRight.setAxisMinValue(0f);
+		yAxisRight.setLabelCount(15, true);
+		yAxisRight.setEnabled(false);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.community, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+}

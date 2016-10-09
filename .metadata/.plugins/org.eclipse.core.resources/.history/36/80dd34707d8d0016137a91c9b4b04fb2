@@ -1,0 +1,19 @@
+package com.whileloop.hydrosaver;
+
+public class Device {
+	public float units; //
+	
+	
+	
+	
+	
+	
+	
+	
+	public float calculateCost(){
+		//cost making algorithm here
+		return units*3;
+	}
+	
+	
+}
